@@ -4,14 +4,14 @@
   "description": "MERN Stack test",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "start": "nodemon backend/server.js"
   },
   "author": "Joaquin Ortiz",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.2.8"
   },
   "devDependencies": {
