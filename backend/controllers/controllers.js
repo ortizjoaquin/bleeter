@@ -11,7 +11,7 @@ const getBleet = asyncHandler (async (req, res) => {
 })
 
 // @desc    Set bleet
-// @route   POST /api/bleet
+// @route   POST /api/bleet 
 // @access  Private
 const setBleet = asyncHandler (async (req, res) => {
   if(!req.body.text) {

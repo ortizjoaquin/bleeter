@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getBleet, setBleet, updateBleet, deleteBlee } = require('../controllers/controllers')
+const { getBleet, setBleet, updateBleet, deleteBleet } = require('../controllers/controllers')
 
 router.route('/').get(getBleet).post(setBleet)
 
