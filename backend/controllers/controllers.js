@@ -1,58 +1,58 @@
 const asyncHandler = require('express-async-handler')
 
-const Stuff = require('../models/stuffModel')
+const Bleet = require('../models/bleetModel')
 
-// @desc    Get stuff
-// @route   GET /api/stuff
+// @desc    Get bleet
+// @route   GET /api/bleet
 // @access  Private
-const getStuff = asyncHandler (async (req, res) => {
-  const stuff = await Stuff.find()
-  res.status(200).json(stuff)
+const getBleet = asyncHandler (async (req, res) => {
+  const bleet = await Bleet.find()
+  res.status(200).json(bleet)
 })
 
-// @desc    Set stuff
-// @route   POST /api/stuff
+// @desc    Set bleet
+// @route   POST /api/bleet
 // @access  Private
-const setStuff = asyncHandler (async (req, res) => {
+const setBleet = asyncHandler (async (req, res) => {
   if(!req.body.text) {
     res.status(400)
-    throw new Error ('Dude add some stuff! 😡')
+    throw new Error ('Dude add something! 😡')
   }
-  const stuff = await Stuff.create({
+  const bleet = await Bleet.create({
     text: req.body.text
   })
-  res.status(200).json(stuff)
+  res.status(200).json(bleet)
 })
 
-// @desc    Update stuff
-// @route   PUT /api/stuff/:id
+// @desc    Update bleet
+// @route   PUT /api/bleet/:id
 // @access  Private
-const updateStuff = asyncHandler (async (req, res) => {
-  const stuff = await Stuff.findById(req.params.id)
-  if(!stuff) {
+const updateBleet = asyncHandler (async (req, res) => {
+  const bleet = await Bleet.findById(req.params.id)
+  if(!bleet) {
     res.status(400)
-    throw new Error('Stuff not found')
+    throw new Error('Bleet not found')
   }
-  const updatedStuff = await Stuff.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  const updatedBleet = await Bleet.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
-  res.status(200).json(updatedStuff)
+  res.status(200).json(updatedBleet)
 })
 
-// @desc    Delete stuff
-// @route   DELETE /api/stuff/:id
+// @desc    Delete bleet
+// @route   DELETE /api/bleet/:id
 // @access  Private
-const deleteStuff = asyncHandler (async (req, res) => {
-  const stuff = await Stuff.findByIdAndDelete(req.params.id)
-  if(!stuff) {
+const deleteBleet = asyncHandler (async (req, res) => {
+  const bleet = await Bleet.findByIdAndDelete(req.params.id)
+  if(!bleet) {
     res.status(400)
-    throw new Error('Stuff not found')
+    throw new Error('Bleet not found')
   }
-  res.status(200).json({ message: `Stuff with the ID N° ${req.params.id} deleted successfully` })
+  res.status(200).json({ message: `Bleet with the ID N° ${req.params.id} deleted successfully` })
 })
 
 module.exports = {
-  getStuff,
-  setStuff,
-  updateStuff,
-  deleteStuff
+  getBleet,
+  setBleet,
+  updateBleet,
+  deleteBleet
 }

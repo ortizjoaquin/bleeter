@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const { getStuff, setStuff, updateStuff, deleteStuff } = require('../controllers/controllers')
+const { getBleet, setBleet, updateBleet, deleteBlee } = require('../controllers/controllers')
 
-router.route('/').get(getStuff).post(setStuff)
+router.route('/').get(getBleet).post(setBleet)
 
-router.route('/:id').put(updateStuff).delete(deleteStuff)
+router.route('/:id').put(updateBleet).delete(deleteBleet)
 
 module.exports = router
