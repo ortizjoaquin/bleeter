@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const Bleet = require('../models/bleetModel')
 
 // @desc    Get bleet
-// @route   GET /api/bleet
+// @route   GET /api/bleeter
 // @access  Private
 const getBleet = asyncHandler (async (req, res) => {
   const bleet = await Bleet.find()
@@ -11,7 +11,7 @@ const getBleet = asyncHandler (async (req, res) => {
 })
 
 // @desc    Set bleet
-// @route   POST /api/bleet 
+// @route   POST /api/bleeter
 // @access  Private
 const setBleet = asyncHandler (async (req, res) => {
   if(!req.body.text) {
@@ -25,7 +25,7 @@ const setBleet = asyncHandler (async (req, res) => {
 })
 
 // @desc    Update bleet
-// @route   PUT /api/bleet/:id
+// @route   PUT /api/bleeter/:id
 // @access  Private
 const updateBleet = asyncHandler (async (req, res) => {
   const bleet = await Bleet.findById(req.params.id)
@@ -39,7 +39,7 @@ const updateBleet = asyncHandler (async (req, res) => {
 })
 
 // @desc    Delete bleet
-// @route   DELETE /api/bleet/:id
+// @route   DELETE /api/bleeter/:id
 // @access  Private
 const deleteBleet = asyncHandler (async (req, res) => {
   const bleet = await Bleet.findByIdAndDelete(req.params.id)
