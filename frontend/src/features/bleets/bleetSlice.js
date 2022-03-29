@@ -25,21 +25,23 @@ export const bleetSlice = createSlice ({
   initialState,
   reducers: {
     reset: (state) => initialState
-  }
-  extraReducers: (builder) => {
-    builder
-      .addCase(createBleet.pending, (state) => {
-        state.isLoading = true
-      .addCase(createBleet.fullfilled, (state, action) => {
-        state.isLoading = false
-        state.isSuccess = true
-        state.bleets.push(action.payload)
-      })
-      .addCase(createBleet.fullfilled, (state, action) => {
-        state.isLoading = false
-        state.isError = true
-        state.message = action.payload
-  }
+  },
+    extraReducers: (builder) => {
+      builder
+        .addCase(createBleet.pending, (state) => {
+          state.isLoading = true
+        })
+        .addCase(createBleet.fullfilled, (state, action) => {
+          state.isLoading = false
+          state.isSuccess = true
+          state.bleets.push(action.payload)
+        })
+        .addCase(createBleet.fullfilled, (state, action) => {
+          state.isLoading = false
+          state.isError = true
+          state.message = action.payload
+        })
+    }
 })
 
 export const {reset} = bleetSlice.actions
