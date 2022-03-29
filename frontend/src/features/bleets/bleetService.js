@@ -1,8 +1,6 @@
 import axios from 'axios'
-import { acceptsEncodings } from 'express/lib/request'
-
-const API_URL = '/api/bleets/'
-
+// import { acceptsEncodings } from 'express/lib/request'
+const API_URL = '/api/bleeter/'
 // Create new bleet
 const createBleet = async (bleetData, token) => {
   const config = {

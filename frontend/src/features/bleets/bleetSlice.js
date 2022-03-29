@@ -31,12 +31,12 @@ export const bleetSlice = createSlice ({
         .addCase(createBleet.pending, (state) => {
           state.isLoading = true
         })
-        .addCase(createBleet.fullfilled, (state, action) => {
+        .addCase(createBleet.fulfilled, (state, action) => {
           state.isLoading = false
           state.isSuccess = true
           state.bleets.push(action.payload)
         })
-        .addCase(createBleet.fullfilled, (state, action) => {
+        .addCase(createBleet.rejected, (state, action) => {
           state.isLoading = false
           state.isError = true
           state.message = action.payload

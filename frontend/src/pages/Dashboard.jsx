@@ -11,9 +11,7 @@ function Dashboard() {
       <h1>Welcome {user ? user.name : ''}</h1>
       <p>Latest bleets</p>
     </section>
-    <BleetForm>
-      
-    </BleetForm>
+    {user ? <BleetForm/> : ''}
   </>
 }
 
