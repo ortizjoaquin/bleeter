@@ -1,6 +1,6 @@
 import axios from 'axios'
-// import { acceptsEncodings } from 'express/lib/request'
 const API_URL = '/api/bleeter/'
+
 // Create new bleet
 const createBleet = async (bleetData, token) => {
   const config = {
@@ -11,8 +11,15 @@ const createBleet = async (bleetData, token) => {
   const response = await axios.post(API_URL, bleetData, config)
   return response.data
 }
+
+// Get all bleets
+const getAllBleets = async () => {
+  const response = await axios.get(API_URL)
+  return response.data
+}
 const bleetService = {
-  createBleet
+  createBleet,
+  getAllBleets
 }
 
 export default bleetService

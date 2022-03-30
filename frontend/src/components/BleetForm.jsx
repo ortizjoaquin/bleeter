@@ -14,12 +14,14 @@ function BleetForm() {
     <section className='form'>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <input
+          <textarea
           type="text"
           name="text"
           id="text"
           value= {text}
           placeholder="What's up?"
+          maxlength="160"
+          height = ""
           onChange={(e) => setText(e.target.value)}/>
         </div>
         <div className="form-group">

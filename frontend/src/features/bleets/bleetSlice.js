@@ -20,6 +20,17 @@ export const createBleet = createAsyncThunk('bleets/create', async (bleetData, t
   }
 })
 
+// Get all bleets
+export const getAllBleets = createAsyncThunk('bleets/getAll', async (_, thunkAPI) => {
+  try {
+    // const token = thunkAPI.getState().auth.user.token
+    return await bleetService.getAllBleets()
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
+  }
+})
+
 export const bleetSlice = createSlice ({
   name: 'bleet',
   initialState,
@@ -37,6 +48,19 @@ export const bleetSlice = createSlice ({
           state.bleets.push(action.payload)
         })
         .addCase(createBleet.rejected, (state, action) => {
+          state.isLoading = false
+          state.isError = true
+          state.message = action.payload
+        })
+        .addCase(getAllBleets.pending, (state) => {
+          state.isLoading = true
+        })
+        .addCase(getAllBleets.fulfilled, (state, action) => {
+          state.isLoading = false
+          state.isSuccess = true
+          state.bleets = action.payload
+        })
+        .addCase(getAllBleets.rejected, (state, action) => {
           state.isLoading = false
           state.isError = true
           state.message = action.payload

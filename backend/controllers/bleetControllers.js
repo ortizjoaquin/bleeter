@@ -4,7 +4,7 @@ const User = require('../models/userModel')
 
 // @desc    Get all bleets
 // @route   GET /api/bleeter
-// @access  Private
+// @access  Public
 const getAllBleets = asyncHandler (async (req, res) => {
   const bleet = await Bleet.find()
   res.status(200).json(bleet)
@@ -13,10 +13,10 @@ const getAllBleets = asyncHandler (async (req, res) => {
 // @desc    Get my bleets
 // @route   GET /api/bleeter/me
 // @access  Private
-const getBleet = asyncHandler (async (req, res) => {
-  const bleet = await Bleet.find({ user: req.user.id })
-  res.status(200).json(bleet)
-})
+// const getBleet = asyncHandler (async (req, res) => {
+//   const bleet = await Bleet.find({ user: req.user.id })
+//   res.status(200).json(bleet)
+// })
 
 // @desc    Set bleet
 // @route   POST /api/bleeter
@@ -27,8 +27,9 @@ const setBleet = asyncHandler (async (req, res) => {
     throw new Error ('Dude add something! 😡')
   }
   const bleet = await Bleet.create({
-    text: req.body.text,
+    username:req.user.username,
     user: req.user.id,
+    text: req.body.text
   })
   res.status(200).json(bleet)
 })
@@ -81,7 +82,7 @@ const deleteBleet = asyncHandler (async (req, res) => {
 
 module.exports = {
   getAllBleets,
-  getBleet,
+  // getBleet,
   setBleet,
   updateBleet,
   deleteBleet

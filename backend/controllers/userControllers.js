@@ -41,7 +41,7 @@ const registerUser = asyncHandler(async(req, res) => {
     res.status(201).json({
       message: 'User created 👍',
       _id: user.id,
-      name: user.username,
+      username: user.username,
       email: user.email,
       token: generateToken(user._id)
     })
@@ -63,7 +63,7 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(200).json({
       message: 'Logging in 🙌',
       _id: user.id,
-      name: user.username,
+      username: user.username,
       email: user.email,
       token: generateToken(user._id)
     })
