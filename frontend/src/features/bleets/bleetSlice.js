@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import bleetService from './bleetService'
+import {toast} from 'react-toastify'
 
 const initialState = {
   bleets: [],
@@ -16,7 +17,8 @@ export const createBleet = createAsyncThunk('bleets/create', async (bleetData, t
     return await bleetService.createBleet(bleetData, token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-    return thunkAPI.rejectWithValue(message)
+    // return thunkAPI.rejectWithValue(message)
+    return toast(message)
   }
 })
 
@@ -27,7 +29,8 @@ export const getAllBleets = createAsyncThunk('bleets/getAll', async (_, thunkAPI
     return await bleetService.getAllBleets()
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-    return thunkAPI.rejectWithValue(message)
+    // return thunkAPI.rejectWithValue(message)
+    return toast(message)
   }
 })
 
@@ -38,7 +41,8 @@ export const deleteBleet = createAsyncThunk('bleets/delete', async (id, thunkAPI
     return await bleetService.deleteBleet(id, token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-    return thunkAPI.rejectWithValue(message)
+    // return thunkAPI.rejectWithValue(message)
+    return toast(message)
   }
 })
 
