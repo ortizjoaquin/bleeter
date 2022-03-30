@@ -20,7 +20,7 @@ function BleetForm() {
           id="text"
           value= {text}
           placeholder="What's up?"
-          maxlength="160"
+          maxLength="160"
           height = ""
           onChange={(e) => setText(e.target.value)}/>
         </div>

@@ -17,9 +17,22 @@ const getAllBleets = async () => {
   const response = await axios.get(API_URL)
   return response.data
 }
+//Delete bleet
+const deleteBleet = async (bleetId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+  const response = await axios.delete(API_URL + bleetId, config)
+  return response.data
+}
+
 const bleetService = {
   createBleet,
-  getAllBleets
+  getAllBleets,
+  deleteBleet
 }
+
 
 export default bleetService

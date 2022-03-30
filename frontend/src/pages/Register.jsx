@@ -60,7 +60,7 @@ function Register() {
         <FaUser/> Register
       </h1>
       <p>
-        Please create an account
+        Create an account and start bleeting
       </p>
     </section>
     <section className="form">
@@ -72,7 +72,7 @@ function Register() {
             id="username"
             name="username"
             value={username}
-            placeholder="Enter your username"
+            placeholder="Create a username"
             onChange={onChange}/>
         </div>
         <div className="form-group">
@@ -92,7 +92,7 @@ function Register() {
             id="password"
             name="password"
             value={password}
-            placeholder="Enter your password"
+            placeholder="Create a password"
             onChange={onChange}/>
         </div>
         <div className="form-group">

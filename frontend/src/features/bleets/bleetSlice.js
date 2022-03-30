@@ -31,6 +31,17 @@ export const getAllBleets = createAsyncThunk('bleets/getAll', async (_, thunkAPI
   }
 })
 
+// Delete bleet
+export const deleteBleet = createAsyncThunk('bleets/delete', async (id, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token
+    return await bleetService.deleteBleet(id, token)
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
+  }
+})
+
 export const bleetSlice = createSlice ({
   name: 'bleet',
   initialState,
@@ -61,6 +72,19 @@ export const bleetSlice = createSlice ({
           state.bleets = action.payload
         })
         .addCase(getAllBleets.rejected, (state, action) => {
+          state.isLoading = false
+          state.isError = true
+          state.message = action.payload
+        })
+        .addCase(deleteBleet.pending, (state) => {
+          state.isLoading = true
+        })
+        .addCase(deleteBleet.fulfilled, (state, action) => {
+          state.isLoading = false
+          state.isSuccess = true
+          state.bleets = state.bleets.filter((bleet) => bleet._id !== action.payload.id)
+        })
+        .addCase(deleteBleet.rejected, (state, action) => {
           state.isLoading = false
           state.isError = true
           state.message = action.payload

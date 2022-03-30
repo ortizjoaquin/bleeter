@@ -77,7 +77,8 @@ const deleteBleet = asyncHandler (async (req, res) => {
     res.status(401)
     throw new Error('User not authorized')
   }
-  res.status(200).json({ message: `Bleet with the ID N° ${req.params.id} deleted successfully` })
+  await bleet.delete()
+  res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
